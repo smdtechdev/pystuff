@@ -1,4 +1,6 @@
 # LISTS
+import copy
+
 myList =[10,20,30,40,50]
 myListList = [["cat", "dog"], ["male", "female"]]
 print(myList[4])
@@ -36,3 +38,18 @@ mybigList.sort(reverse=True)
 print(mybigList)
 cats.sort(key=str.lower)
 print(cats)
+
+def eggs(param1):
+    param1.append("yo")
+
+spam = [1,2,3]
+eggs(spam)
+print(spam)
+
+letters = ["a",
+           "b",
+           "c"]
+moreletters = copy.deepcopy(letters)
+moreletters[0] = "Z"
+print(letters)
+print(moreletters)
