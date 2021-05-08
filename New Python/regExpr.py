@@ -154,3 +154,24 @@ print(result.group()) # this will only match whatever is before the first newlin
 nongreedyregex = re.compile(r'.*', re.DOTALL) # re.DOTALL arg in complile means dots mean match truely everything
 result = nongreedyregex.search(text)
 print(result.group()) # this will print all lines of text
+
+nameregex = re.compile(r'Agent \w+') # find Agent plus one or more words
+results = nameregex.findall('Agent Alice spoke to Agent Bob')
+print(results)
+encresults = nameregex.sub('REDACTED', 'Agent Alice spoke to Agent Bob') # substitute any matches with another string in this case REDACTED 
+print(encresults)
+
+nameregex = re.compile(r'Agent (\w)\w*') # Match a single word after Agent followed by 0 or more words
+results = nameregex.findall('Agent Alice spoke to Agent Bob')
+print(results)
+encresults = nameregex.sub(r'Agent \1*****', 'Agent Alice spoke to Agent Bob') # substitue any matches with the match in the first group (denoted by \1) and appended stars, use r(raw string) as we need a literal backslash
+print(encresults)
+
+telregex = re.compile(r'''
+                      \d\d\d\d  #area code
+                      -         #first dash
+                      \d\d\d    #first set of digits
+                      -         #second dash
+                      \d\d\d\d  #last set of digits ''', re.VERBOSE | re.DOTALL | re.IGNORECASE) # verbose allows you to add spaces and comments to make longer REx more readable
+mo = telregex.findall('my number is 0208-345-3452 my other number is 0207-342-2421')
+print(mo)
