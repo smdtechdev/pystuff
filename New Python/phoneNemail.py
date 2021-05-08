@@ -13,8 +13,8 @@ phoneRegEx = re.compile(r'''(               # there are many groups so added bra
            \d\d\d                           #first 3 digits e.g. 345
            -                                #dash e.g. dash
            \d\d\d\d                         #last 4 digits e.g. 6789
-           (((ext(\.)?\s)|x)                #ext words e.g.ext ext. extx
-            (\d{2-5}))? )                    #ext nums e.g. 23 235 2345 23456 or no extension
+           (((ext(\.)?\s)|x)                #ext words e.g. ext ext. x
+            (\d{2-5}))? )                   #ext nums e.g. 23 235 2345 23456 or no extension
            ''', re.VERBOSE)
 
 emailRegEx = re.compile(r'''
