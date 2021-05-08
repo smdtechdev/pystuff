@@ -19,3 +19,38 @@
 2021-05-08 18:41:41,175 - INFO - i is 4, total is 24
 2021-05-08 18:41:41,175 - INFO - i is 5, total is 120
 2021-05-08 18:41:41,175 - INFO - Return value is 120
+2021-05-08 18:49:06,908 - INFO - Start of factorial(5)
+2021-05-08 18:49:06,908 - INFO - i is 1, total is 1
+2021-05-08 18:49:06,908 - INFO - i is 2, total is 2
+2021-05-08 18:49:06,908 - INFO - i is 3, total is 6
+2021-05-08 18:49:06,908 - INFO - i is 4, total is 24
+2021-05-08 18:49:06,908 - INFO - i is 5, total is 120
+2021-05-08 18:49:06,908 - INFO - Return value is 120
+2021-05-08 18:50:57,974 - INFO - Start of factorial(5)
+2021-05-08 18:50:57,974 - INFO - i is 1, total is 1
+2021-05-08 18:50:57,974 - INFO - i is 2, total is 2
+2021-05-08 18:50:57,974 - INFO - i is 3, total is 6
+2021-05-08 18:50:57,975 - INFO - i is 4, total is 24
+2021-05-08 18:50:57,975 - INFO - i is 5, total is 120
+2021-05-08 18:50:57,975 - INFO - Return value is 120
+2021-05-08 18:52:42,597 - INFO - Start of factorial(5)
+2021-05-08 18:52:42,597 - INFO - i is 1, total is 1
+2021-05-08 18:52:42,597 - INFO - i is 2, total is 2
+2021-05-08 18:52:42,597 - INFO - i is 3, total is 6
+2021-05-08 18:52:42,597 - INFO - i is 4, total is 24
+2021-05-08 18:52:42,597 - INFO - i is 5, total is 120
+2021-05-08 18:52:42,597 - INFO - Return value is 120
+2021-05-08 18:53:24,670 - INFO - Start of factorial(5)
+2021-05-08 18:53:24,670 - INFO - i is 1, total is 1
+2021-05-08 18:53:24,671 - INFO - i is 2, total is 2
+2021-05-08 18:53:24,671 - INFO - i is 3, total is 6
+2021-05-08 18:53:24,671 - INFO - i is 4, total is 24
+2021-05-08 18:53:24,671 - INFO - i is 5, total is 120
+2021-05-08 18:53:24,671 - INFO - Return value is 120
+2021-05-08 19:01:30,679 - INFO - Start of factorial(5)
+2021-05-08 19:01:30,679 - INFO - i is 1, total is 1
+2021-05-08 19:01:30,680 - INFO - i is 2, total is 2
+2021-05-08 19:01:30,680 - INFO - i is 3, total is 6
+2021-05-08 19:01:30,680 - INFO - i is 4, total is 24
+2021-05-08 19:01:30,680 - INFO - i is 5, total is 120
+2021-05-08 19:01:30,680 - INFO - Return value is 120
