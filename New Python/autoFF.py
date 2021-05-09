@@ -10,9 +10,9 @@ browser.get('http://www.smd.tech')
 elem = browser.find_element_by_css_selector('.fa-question-circle-o')
 time.sleep(5)
 elem.click()
-elem = browser.find_element_by_class_name('comingSoon')
-time.sleep(5)
-elem.click()
+# elem = browser.find_element_by_class_name('comingSoon')
+# time.sleep(5)
+# elem.click()
 
 # elem = browser.find_element_by_css_selector('#contact > div > div > p:nth-child(1) > a')
 # time.sleep(5)
@@ -24,4 +24,6 @@ elem.click()
 #     element.click()
 # finally:
 #     browser.quit()
-        
+ 
+elem = browser.find_element_by_css_selector('#about > div > div')
+print(elem.text)      
