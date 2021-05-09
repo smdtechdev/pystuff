@@ -1,6 +1,6 @@
 import logging
 
-logging.basicConfig(filename='logs.txt', level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
+logging.basicConfig(filename='Automation\\files\\logs.txt', level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
 
 logging.disable(logging.DEBUG) # disables any logging.debug calls
 

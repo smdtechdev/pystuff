@@ -1,11 +1,7 @@
 import openpyxl, os
 from openpyxl.styles import Font, Fill
 
-print(os.getcwd())
-os.chdir('H:\\DEV\\pystuff\\pystuff\\New Python')
-print(os.getcwd())
-
-workbook = openpyxl.load_workbook('Financial Sample.xlsx')
+workbook = openpyxl.load_workbook('Automation\\files\\Financial Sample.xlsx')
 print(type(workbook))
 sheetNames = workbook.sheetnames
 print(sheetNames)
@@ -46,7 +42,7 @@ sht2['A3'] = 'Super'
 
 sht2['A1'].font = Font(size=12, b=True, i=True, color='00FF0000')
 
-wb.save('mysheet.xlsx')
+wb.save('Automation\\files\\mysheet.xlsx')
 
 
 

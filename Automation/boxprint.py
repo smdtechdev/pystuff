@@ -7,7 +7,7 @@ def boxPrint(symbol, w, h):
         if (w < 2) or (h < 2):
             raise Exception('w or h need to be greater than or equal to 2')
     except:
-        errFile = open('log.txt', 'a')
+        errFile = open('Automation\\files\\log.txt', 'a')
         errFile.write(traceback.format_exc())
         errFile.close()
         print('Traceback info was written to log.txt')
