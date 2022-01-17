@@ -9,7 +9,15 @@ window = Tk()
 window.title("Rota")
 window.geometry('1000x250')
 
+monList = ["Mon"]
+tueList = ["Tue"]
+wedList = ["Wed"]
+thuList = ["Thu"]
+friList = ["Fri"]
 
+week = []
+
+mydict = {}
 
 lblMon = Label(window, text="Monday:", font=("Arial Bold", 20))
 lblMonVal = Label(window, text="", font=("Arial Bold", 20))
@@ -84,55 +92,16 @@ comboU7.grid(column=14, row=0)
 
 #LOGIC#
 
-monList = ["Mon"]
-tueList = ["Tue"]
-wedList = ["Wed"]
-thuList = ["Thu"]
-friList = ["Fri"]
-
-
-def saveRota():
-
-    week = [
-        monList,
-        tueList,
-        wedList,
-        thuList,
-        friList
-    ]
-
-    print(week)
-
-    with open('some.csv', 'wb') as f:
-            writer = csv.writer(f)
-            writer.writerows(week)
-
-mydict = {}
-
-# Creating Menubar
-menubar = Menu(window)
-  
-# Adding File Menu and commands
-file = Menu(menubar, tearoff = 0)
-menubar.add_cascade(label ='File', menu = file)
-file.add_command(label ='Save', command = saveRota)
-file.add_separator()
-file.add_command(label ='Exit', command = window.destroy)
-  
-# display Menu
-window.config(menu = menubar)
-
-
 def btn_clicked():
 
+    # Reset lists
     monList = ["Mon"]
     tueList = ["Tue"]
     wedList = ["Wed"]
     thuList = ["Thu"]
     friList = ["Fri"]
     
-    
-    #lblTue.configure(text=lblU1.cget("text"))
+    # Build dictionary of user choices
     mydict = {
         lblU1.cget("text"): comboU1.get(),
         lblU2.cget("text"): comboU2.get(),
@@ -141,8 +110,8 @@ def btn_clicked():
         lblU5.cget("text"): comboU5.get(),
         lblU6.cget("text"): comboU6.get(),
         lblU7.cget("text"): comboU7.get()}
-    #lblWed.configure(text=mydict)
     
+    # Compare choice with day of week and populate list if they don't match
     for k,j in mydict.items():
         print (k,j)
         print(monList[0])
@@ -159,20 +128,52 @@ def btn_clicked():
             friList.append(k)             
         else:
             print("error")
-            
+    
+    # Update label to display current lists        
     lblMonVal.configure(text=monList[1:])
     lblTueVal.configure(text=tueList[1:])
     lblWedVal.configure(text=wedList[1:])
     lblThuVal.configure(text=thuList[1:])
     lblFriVal.configure(text=friList[1:])
+    
+    # save all days as a list updating global variable
+    global week
+    week = [
+        monList,
+        tueList,
+        wedList,
+        thuList,
+        friList
+    ]
+    
+    return week
             
-            
-
-
-btn = Button(window, text="Click Me", command=btn_clicked)
+# Button to generate the rota
+btn = Button(window, text="Generate", command=btn_clicked)
 btn.grid(column=0, row=2)
 lblBtn = Label()
 lblBtn.grid(column=1, row=2)
+
+# Save the rota as a csv file
+def savecsv():
+    
+    with open('GUI\\files\\shifts.csv', 'w', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerows(week)
+    print("CSV Saved")        
+            
+# Creating Menubar
+menubar = Menu(window)
+  
+# Adding File Menu and commands
+file = Menu(menubar, tearoff = 0)
+menubar.add_cascade(label ='File', menu = file)
+file.add_command(label ='Save', command = savecsv)
+file.add_separator()
+file.add_command(label ='Exit', command = window.destroy)
+  
+# display Menu
+window.config(menu = menubar)
 
 #END LOGIC#
 
