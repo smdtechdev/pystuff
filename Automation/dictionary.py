@@ -9,7 +9,7 @@ print(mydict.keys())
 print(mydict.values())
 print(mydict.items())
 
-for k in mydict.keys():
+for k in mydict.values():
     print(k)
 
 for i,j in mydict.items():
