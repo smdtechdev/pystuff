@@ -90,19 +90,38 @@ wedList = ["Wed"]
 thuList = ["Thu"]
 friList = ["Fri"]
 
-week = [
-    monList,
-    tueList,
-    wedList,
-    thuList,
-    friList
-]
 
-# with open('some.csv', 'wb') as f:
-#         writer = csv.writer(f)
-#         writer.writerows(week)
+def saveRota():
+
+    week = [
+        monList,
+        tueList,
+        wedList,
+        thuList,
+        friList
+    ]
+
+    print(week)
+
+    with open('some.csv', 'wb') as f:
+            writer = csv.writer(f)
+            writer.writerows(week)
 
 mydict = {}
+
+# Creating Menubar
+menubar = Menu(window)
+  
+# Adding File Menu and commands
+file = Menu(menubar, tearoff = 0)
+menubar.add_cascade(label ='File', menu = file)
+file.add_command(label ='Save', command = saveRota)
+file.add_separator()
+file.add_command(label ='Exit', command = window.destroy)
+  
+# display Menu
+window.config(menu = menubar)
+
 
 def btn_clicked():
 
