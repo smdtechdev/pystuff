@@ -1,5 +1,6 @@
 from tkinter import *
 from tkinter import ttk
+import csv
 
 #GUI#
 
@@ -88,6 +89,18 @@ tueList = ["Tue"]
 wedList = ["Wed"]
 thuList = ["Thu"]
 friList = ["Fri"]
+
+week = [
+    monList,
+    tueList,
+    wedList,
+    thuList,
+    friList
+]
+
+# with open('some.csv', 'wb') as f:
+#         writer = csv.writer(f)
+#         writer.writerows(week)
 
 mydict = {}
 
