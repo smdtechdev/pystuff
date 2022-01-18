@@ -1,4 +1,6 @@
+from sre_parse import State
 from tkinter import *
+from tkinter import messagebox
 from tkinter import ttk
 import csv
 
@@ -7,7 +9,7 @@ import csv
 window = Tk()
 
 window.title("Rota")
-window.geometry('1000x250')
+window.geometry('800x200')
 
 monList = ["Mon"]
 tueList = ["Tue"]
@@ -19,27 +21,27 @@ week = []
 
 mydict = {}
 
-lblMon = Label(window, text="Monday:", font=("Arial Bold", 20))
-lblMonVal = Label(window, text="", font=("Arial Bold", 20))
-lblTue = Label(window, text="Tuesday:", font=("Arial Bold", 20))
-lblTueVal = Label(window, text="", font=("Arial Bold", 20))
-lblWed = Label(window, text="Wednesday:", font=("Arial Bold", 20))
-lblWedVal = Label(window, text="", font=("Arial Bold", 20))
-lblThu = Label(window, text="Thursday:", font=("Arial Bold", 20))
-lblThuVal = Label(window, text="", font=("Arial Bold", 20))
-lblFri = Label(window, text="Friday:", font=("Arial Bold", 20))
-lblFriVal = Label(window, text="", font=("Arial Bold", 20))
+lblMon = Label(window, text="Monday:", font=("Arial Bold", 10))
+lblMonVal = Label(window, text="", font=("Arial Bold", 10))
+lblTue = Label(window, text="Tuesday:", font=("Arial Bold", 10))
+lblTueVal = Label(window, text="", font=("Arial Bold", 10))
+lblWed = Label(window, text="Wednesday:", font=("Arial Bold", 10))
+lblWedVal = Label(window, text="", font=("Arial Bold", 10))
+lblThu = Label(window, text="Thursday:", font=("Arial Bold", 10))
+lblThuVal = Label(window, text="", font=("Arial Bold", 10))
+lblFri = Label(window, text="Friday:", font=("Arial Bold", 10))
+lblFriVal = Label(window, text="", font=("Arial Bold", 10))
 
-lblMon.grid(column=0, row=4)
-lblMonVal.grid(column=1, row=4)
-lblTue.grid(column=0, row=5)
-lblTueVal.grid(column=1, row=5)
-lblWed.grid(column=0, row=6)
-lblWedVal.grid(column=1, row=6)
-lblThu.grid(column=0, row=7)
-lblThuVal.grid(column=1, row=7)
-lblFri.grid(column=0, row=8)
-lblFriVal.grid(column=1, row=8)
+lblMon.grid(column=0, row=6)
+lblMonVal.grid(column=1, row=6)
+lblTue.grid(column=0, row=7)
+lblTueVal.grid(column=1, row=7)
+lblWed.grid(column=0, row=8)
+lblWedVal.grid(column=1, row=8)
+lblThu.grid(column=0, row=9)
+lblThuVal.grid(column=1, row=9)
+lblFri.grid(column=0, row=10)
+lblFriVal.grid(column=1, row=10)
 
 comboU1 = ttk.Combobox(window, width=4)
 comboU2 = ttk.Combobox(window, width=4)
@@ -66,26 +68,26 @@ comboU6.current(0) #set the selected item
 comboU7.current(0) #set the selected item
 
 lblU1 = Label(window, text="JS")
-lblU1.grid(column=1, row=0)
-comboU1.grid(column=2, row=0)
+lblU1.grid(column=5, row=0)
+comboU1.grid(column=6, row=0)
 lblU2 = Label(window, text="VB")
-lblU2.grid(column=3, row=0)
-comboU2.grid(column=4, row=0)
+lblU2.grid(column=7, row=0)
+comboU2.grid(column=8, row=0)
 lblU3 = Label(window, text="CA")
-lblU3.grid(column=5, row=0)
-comboU3.grid(column=6, row=0)
+lblU3.grid(column=9, row=0)
+comboU3.grid(column=10, row=0)
 lblU4 = Label(window, text="RF")
-lblU4.grid(column=7, row=0)
-comboU4.grid(column=8, row=0)
+lblU4.grid(column=11, row=0)
+comboU4.grid(column=12, row=0)
 lblU5 = Label(window, text="MG")
-lblU5.grid(column=9, row=0)
-comboU5.grid(column=10, row=0)
+lblU5.grid(column=13, row=0)
+comboU5.grid(column=14, row=0)
 lblU6 = Label(window, text="GW")
-lblU6.grid(column=11, row=0)
-comboU6.grid(column=12, row=0)
+lblU6.grid(column=15, row=0)
+comboU6.grid(column=16, row=0)
 lblU7 = Label(window, text="DP")
-lblU7.grid(column=13, row=0)
-comboU7.grid(column=14, row=0)
+lblU7.grid(column=17, row=0)
+comboU7.grid(column=18, row=0)
 
 
 #END GUI#
@@ -136,6 +138,9 @@ def btn_clicked():
     lblThuVal.configure(text=thuList[1:])
     lblFriVal.configure(text=friList[1:])
     
+    # Enable export menu item
+    file.entryconfig("Export CSV", state="normal")
+    
     # save all days as a list updating global variable
     global week
     week = [
@@ -150,17 +155,19 @@ def btn_clicked():
             
 # Button to generate the rota
 btn = Button(window, text="Generate", command=btn_clicked)
-btn.grid(column=0, row=2)
+btn.grid(column=0, row=11)
 lblBtn = Label()
 lblBtn.grid(column=1, row=2)
 
 # Save the rota as a csv file
 def savecsv():
-    
-    with open('GUI\\files\\shifts.csv', 'w', newline='') as f:
-            writer = csv.writer(f)
-            writer.writerows(week)
-    print("CSV Saved")        
+    try:
+        with open('GUI\\files\\shifts.csv', 'w', newline='') as f:
+                writer = csv.writer(f)
+                writer.writerows(week)
+        messagebox.showinfo("Export CSV", "Export Completed")  
+    except:
+        messagebox.showinfo("Export CSV", "Export Failed")
             
 # Creating Menubar
 menubar = Menu(window)
@@ -168,10 +175,10 @@ menubar = Menu(window)
 # Adding File Menu and commands
 file = Menu(menubar, tearoff = 0)
 menubar.add_cascade(label ='File', menu = file)
-file.add_command(label ='Save', command = savecsv)
+file.add_command(label ='Export CSV', command = savecsv)
 file.add_separator()
 file.add_command(label ='Exit', command = window.destroy)
-  
+file.entryconfig("Export CSV", state="disabled")  
 # display Menu
 window.config(menu = menubar)
 
