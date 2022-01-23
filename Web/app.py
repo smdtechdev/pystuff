@@ -1,6 +1,6 @@
-from flask import redirect, request, Flask, render_template, url_for
-from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
+from flask import Flask, redirect, render_template, request, url_for
+from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///test.db'
@@ -43,7 +43,7 @@ def delete(id):
 def update(id):
     task = Todo.query.get_or_404(id)
     
-    if request.method == ['POST']:
+    if request.method == 'POST':
         task.content = request.form['content']
         
         try:
@@ -53,7 +53,7 @@ def update(id):
             return 'Error updating task'
     
     else:
-         return render_template('update.html', task=task)
+        return render_template('update.html', task=task)
     
 if __name__ == "__main__":
     app.run(debug=True)
